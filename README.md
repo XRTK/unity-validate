@@ -25,6 +25,8 @@ jobs:
 
       - id: unity-validate
         uses: xrtk/unity-validate@main
+          with:
+            modules: 'android ios'
 
         run: echo ${{ steps.unity-validate.outputs.editor-path }}
         run: echo ${{ steps.unity-validate.outputs.project-path }}
