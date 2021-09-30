@@ -6,8 +6,12 @@ inputs:
     required: false
     default: ''
 outputs:
-  editor-path: ${{ steps.validate.outputs.editor-path }}
-  project-path: ${{ steps.validate.outputs.project-path }}
+  editor-path:
+    description: 'The path to the Unity Editor'
+    value: ${{ steps.validate.outputs.editor-path }}
+  project-path:
+    description: 'The path to the unity project'
+    value: ${{ steps.validate.outputs.project-path }}
 runs:
   using: "composite"
   steps:
