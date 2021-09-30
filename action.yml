@@ -19,7 +19,7 @@ runs:
       name: 'Unity Project Validation'
       run: |
         Write-Host "Unity Project Validation"
-        $versionFile = Get-ChildItem -Filter '*/ProjectSettings/ProjectVersion.txt' | Select-Object -First 1
+        $versionFile = "${{ '**/ProjectSettings/ProjectVersion.txt' }}"
         $modulesString = "${{ inputs.modules }}"
         $modules = $modulesString.Split(" ")
 
