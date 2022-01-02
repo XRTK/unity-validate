@@ -19,7 +19,7 @@ runs:
       name: 'Unity Project Validation'
       run: |
         Write-Host "Unity Project Validation"
-        $versionFile = "${{ '**/ProjectSettings/ProjectVersion.txt' }}"
+        $versionFile = "${{ '/**/ProjectSettings/ProjectVersion.txt' }}"
         $modulesString = "${{ inputs.modules }}"
         $modules = $modulesString.Split(" ")
 
@@ -174,7 +174,7 @@ runs:
           exit 1
         }
 
-        $modulesPath = '{0}{1}{2}modules.json' -f $editorRootPath,$UnityVersion,[IO.Path]::DirectorySeparatorChar
+        $  = '{0}{1}{2}modules.json' -f $editorRootPath,$UnityVersion,[IO.Path]::DirectorySeparatorChar
 
         if ( Test-Path -Path $modulesPath ) {
           Write-Host "Modules Manifest: "$modulesPath
