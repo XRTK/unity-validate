@@ -5,6 +5,10 @@ inputs:
     description: 'additional modules to install with the editor (i.e "webgl android lumin")'
     required: false
     default: ''
+  version-file-path:
+    description: 'Optional, specify a path to search for the unity project version text file. Use this if validation fails to find a valid project version file.'
+    required: false
+    default: '**/ProjectSettings/ProjectVersion.txt'
 outputs:
   editor-path:
     description: 'The path to the Unity Editor'
@@ -19,7 +23,7 @@ runs:
       name: 'Unity Project Validation'
       run: |
         Write-Host "Unity Project Validation"
-        $versionFile = "${{ '**/*ProjectSettings/ProjectVersion.txt' }}"
+        $versionFile = "${{ inputs.version-file-path }}"
         $modulesString = "${{ inputs.modules }}"
         $modules = $modulesString.Split(" ")
 
