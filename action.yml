@@ -178,7 +178,7 @@ runs:
           exit 1
         }
 
-        $  = '{0}{1}{2}modules.json' -f $editorRootPath,$UnityVersion,[IO.Path]::DirectorySeparatorChar
+        $modulesPath = '{0}{1}{2}modules.json' -f $editorRootPath,$UnityVersion,[IO.Path]::DirectorySeparatorChar
 
         if ( Test-Path -Path $modulesPath ) {
           Write-Host "Modules Manifest: "$modulesPath
