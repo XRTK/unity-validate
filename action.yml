@@ -201,4 +201,4 @@ runs:
         Write-Host "UnityEditor path set to: $editorPath"
         Write-Host "::set-output name=editor-path::$editorPath"
         exit 0
-      shell: powershell
+      shell: pwsh
