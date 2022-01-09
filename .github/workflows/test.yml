@@ -32,4 +32,4 @@ jobs:
 
       - id: unity-validate
         name: Unity Editor Validation
-        uses: xrtk/unity-validate@'${{ github.sha }}'
+        uses: ./
