@@ -60,7 +60,7 @@ runs:
         elseif ( $global:PSVersionTable.OS.Contains("Darwin") ) {
           $hubPath = "/Applications/Unity Hub.app/Contents/MacOS/Unity Hub"
           $editorRootPath = "/Applications/Unity/Hub/Editor/"
-          $editorFileEx = "/Unity.app"
+          $editorFileEx = "/Unity.app/Contents/MacOS/Unity"
 
           if ([string]::IsNullOrEmpty($modulesString)) {
             $modules = @('mac-il2cpp', 'ios', 'lumin', 'webgl', 'android')
