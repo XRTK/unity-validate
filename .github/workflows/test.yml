@@ -24,11 +24,15 @@ jobs:
     outputs:
       editor-path: ${{ steps.unity-validate.outputs.editor-path }}
       project-path: ${{ steps.unity-validate.outputs.project-path }}
+
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout self
+        uses: actions/checkout@v2
+
+      - name: checkout test project
+        uses: actions/checkout@v2
         with:
-          submodules: true
-          clean: true
+          repository: xrtk/com.xrtk.test
 
       - id: unity-validate
         name: Unity Editor Validation
