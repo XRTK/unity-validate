@@ -21,9 +21,6 @@ jobs:
     strategy:
       matrix:
         os: [ windows-latest, macos-latest, ubuntu-latest ]
-    outputs:
-      editor-path: ${{ steps.unity-validate.outputs.editor-path }}
-      project-path: ${{ steps.unity-validate.outputs.project-path }}
 
     steps:
       - name: checkout self
@@ -42,5 +39,5 @@ jobs:
           version-file-path: 'test-project/**/ProjectSettings/ProjectVersion.txt'
 
       - run: |
-          echo ${{ steps.unity-validate.output.editor-path }}
-          echo ${{ steps.unity-validate.output.project-path }}
+          echo ${{ steps.unity-validate.outputs.editor-path }}
+          echo ${{ steps.unity-validate.outputs.project-path }}
