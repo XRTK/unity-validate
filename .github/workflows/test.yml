@@ -38,8 +38,8 @@ jobs:
       - id: unity-validate
         name: Unity Editor Validation
         uses: ./
-          with:
-            version-file-path: 'test-project/**/ProjectSettings/ProjectVersion.txt'
+        with:
+          version-file-path: 'test-project/**/ProjectSettings/ProjectVersion.txt'
 
       - run: |
           echo ${{ steps.unity-validate.output.editor-path }}
