@@ -78,7 +78,7 @@ runs:
           $editorFileEx = "/Editor/Unity"
 
           if ([string]::IsNullOrEmpty($modulesString)) {
-            $modules = @('webgl', 'android')
+            $modules = @('linux-il2cpp', 'webgl', 'android')
           }
 
           # /UnityHub.AppImage --headless help
@@ -162,6 +162,14 @@ runs:
           foreach ( $module in $modules ) {
             $installArgs += '-m'
             $installArgs += $module
+
+            if ( $module -eq 'android' ) {
+              $installArgs += '-m'
+              $installArgs += 'android-open-jdk'
+              $installArgs += '-m'
+              $installArgs += 'android-sdk-ndk-tools'
+            }
+
             Write-Host "  with module: $module"
           }
 
