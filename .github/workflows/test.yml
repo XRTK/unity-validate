@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
+  run-tests:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -33,7 +33,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: xrtk/com.xrtk.test
+          path: test-project
 
       - id: unity-validate
         name: Unity Editor Validation
         uses: ./
+          with:
+            version-file-path: 'test-project/**/ProjectSettings/ProjectVersion.txt'
+
+      - run: |
+          echo ${{ steps.unity-validate.output.editor-path }}
+          echo ${{ steps.unity-validate.output.project-path }}
