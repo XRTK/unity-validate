@@ -1,0 +1,39 @@
+name: Validation Tests
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ windows-latest, macos-latest, ubuntu-latest ]
+
+    steps:
+      - name: checkout self
+        uses: actions/checkout@v2
+
+      - name: checkout test project
+        uses: actions/checkout@v2
+        with:
+          repository: xrtk/com.xrtk.test
+          path: test-project
+
+      - id: unity-validate
+        name: Unity Editor Validation
+        uses: ./
+        with:
+          version-file-path: 'test-project/**/ProjectSettings/ProjectVersion.txt'
+
+      - run: |
+          echo ${{ steps.unity-validate.outputs.editor-path }}
+          echo ${{ steps.unity-validate.outputs.project-path }}
