@@ -22,7 +22,7 @@ runs:
     - id: validate
       name: 'Unity Project Validation'
       run: |
-        Write-Host "Unity Project Validation"
+        Write-Host "::group::Unity Project Validation"
         $versionFile = "${{ inputs.version-file-path }}"
         $modulesString = "${{ inputs.modules }}"
         $modules = $modulesString.Split(" ")
@@ -211,5 +211,6 @@ runs:
         Write-Host ""
         Write-Host "UnityEditor path set to: $editorPath"
         Write-Host "::set-output name=editor-path::$editorPath"
+        Write-Host "::endgroup::"
         exit 0
       shell: pwsh
