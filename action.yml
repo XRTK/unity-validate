@@ -192,27 +192,27 @@ runs:
 
         $modulesPath = '{0}{1}{2}modules.json' -f $editorRootPath,$UnityVersion,[IO.Path]::DirectorySeparatorChar
 
-        if ( Test-Path -Path $modulesPath ) {
-          Write-Host "Modules Manifest: "$modulesPath
-          Write-Host ""
-
-          foreach ($module in (Get-Content -Raw -Path $modulesPath | ConvertFrom-Json)) {
-            if ( ($module.category -eq 'Platforms') -and ($module.visible -eq $true) ) {
-              if ( -not ($modules -contains $module.id) ) {
-                Write-Host "additional module option: " $module.id
-              }
-            }
-          }
-        } else {
+        if ( -not (Test-Path -Path $modulesPath)) {
           Write-Error "Failed to resolve modules path at $modulesPath"
 
-          ls $editorRootPath
-
           if (Test-Path -Path $editorRootPath) {
+            Write-Host "Cleaning up invalid installation..."
+            ls $editorRootPath
             Remove-Item $editorRootPath -Recurse -Force
           }
 
           exit 1
+        }
+
+        Write-Host "Modules Manifest: "$modulesPath
+        Write-Host ""
+
+        foreach ($module in (Get-Content -Raw -Path $modulesPath | ConvertFrom-Json)) {
+          if ( ($module.category -eq 'Platforms') -and ($module.visible -eq $true) ) {
+            if ( -not ($modules -contains $module.id) ) {
+              Write-Host "additional module option: " $module.id
+            }
+          }
         }
 
         Write-Host ""
