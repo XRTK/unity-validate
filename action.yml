@@ -203,11 +203,12 @@ runs:
               }
             }
           }
-
         } else {
           Write-Error "Failed to resolve modules path at $modulesPath"
 
-          if (-not (Test-Path -Path $editorPath)) {
+          ls $editorPath
+
+          if (Test-Path -Path $editorPath) {
             Remove-Item $editorPath -Recurse -Force
           }
 
