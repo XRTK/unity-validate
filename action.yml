@@ -155,7 +155,11 @@ runs:
 
         $editorPath = "{0}{1}{2}" -f $editorRootPath,$unityVersion,$editorFileEx
 
-        if ( -not (Test-Path -Path $editorPath) ) {
+        if ( -not (Test-Path -Path $editorPath)) {
+          if (-not (Test-Path -Path $editorPath)) {
+            Remove-Item $editorPath -Recurse -Force
+          }
+
           Write-Host "Installing $unityVersion ($unityVersionChangeSet)..."
           $installArgs = @('install',"--version $unityVersion","--changeset $unityVersionChangeSet",'--cm')
 
