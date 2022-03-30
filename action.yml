@@ -193,10 +193,10 @@ runs:
         $modulesPath = '{0}{1}{2}modules.json' -f $editorRootPath,$UnityVersion,[IO.Path]::DirectorySeparatorChar
 
         if ( -not (Test-Path -Path $modulesPath)) {
-          Write-Error "Failed to resolve modules path at $modulesPath"
           $editorPath = "{0}{1}" -f $editorRootPath,$unityVersion
-
           Write-Host "Cleaning up invalid installation under $editorPath"
+
+          Write-Error "Failed to resolve modules path at $modulesPath"
 
           if (Test-Path -Path $editorPath) {
             ls $editorPath
