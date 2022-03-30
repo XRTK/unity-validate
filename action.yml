@@ -194,11 +194,12 @@ runs:
 
         if ( -not (Test-Path -Path $modulesPath)) {
           Write-Error "Failed to resolve modules path at $modulesPath"
+          $editorPath = "{0}{1}" -f $editorRootPath,$unityVersion
 
-          if (Test-Path -Path $editorRootPath) {
-            Write-Host "Cleaning up invalid installation..."
-            ls $editorRootPath
-            Remove-Item $editorRootPath -Recurse -Force
+          if (Test-Path -Path $editorPath) {
+            Write-Host "Cleaning up invalid installation under $editorPath"
+            ls $editorPath
+            # Remove-Item $editorPath -Recurse -Force
           }
 
           exit 1
