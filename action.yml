@@ -209,7 +209,7 @@ runs:
         Write-Host "Modules Manifest: "$modulesPath
         Write-Host ""
 
-        foreach ($module in (Get-Content -Raw -Path $modulesPath | ConvertFrom-Json)) {
+        foreach ($module in (Get-Content -Raw -Path $modulesPath | ConvertFrom-Json -AsHashTable)) {
           if ( ($module.category -eq 'Platforms') -and ($module.visible -eq $true) ) {
             if ( -not ($modules -contains $module.id) ) {
               Write-Host "additional module option: " $module.id
