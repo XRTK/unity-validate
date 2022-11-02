@@ -21,7 +21,7 @@ jobs:
       editor-path: ${{ steps.unity-validate.outputs.editor-path }}
       project-path: ${{ steps.unity-validate.outputs.project-path }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - id: unity-validate
         uses: xrtk/unity-validate@main
