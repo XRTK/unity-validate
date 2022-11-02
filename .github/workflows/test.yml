@@ -35,5 +35,5 @@ jobs:
           version-file-path: 'test-project/**/ProjectSettings/ProjectVersion.txt'
 
       - run: |
-          echo ${{ steps.unity-validate.outputs.editor-path }}
-          echo ${{ steps.unity-validate.outputs.project-path }}
+          echo "${{ steps.unity-validate.outputs.editor-path }}"
+          echo "${{ steps.unity-validate.outputs.project-path }}"

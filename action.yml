@@ -35,7 +35,7 @@ runs:
 
         $projectPath = (Get-Item $versionFile).Directory.Parent.FullName
         Write-Host "Unity project path: `"$projectPath`""
-        Write-Host "project-path=$projectPath" >> $GITHUB_OUTPUT
+        "project-path=$projectPath" >> $GITHUB_OUTPUT
 
         $version = Get-Content $versionFile
         $pattern = '(?<version>(?:(?<major>\d+)\.)?(?:(?<minor>\d+)\.)?(?:(?<patch>\d+[fab]\d+)\b))|((?:\((?<revision>\w+))\))'
@@ -220,7 +220,7 @@ runs:
 
         Write-Host ""
         Write-Host "UnityEditor path set to: $editorPath"
-        Write-Host "editor-path=$editorPath" >> $GITHUB_OUTPUT
+        "editor-path=$editorPath" >> $GITHUB_OUTPUT
         Write-Host "::endgroup::"
         exit 0
       shell: pwsh
