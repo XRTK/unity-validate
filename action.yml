@@ -22,6 +22,7 @@ runs:
     - id: validate
       name: 'Unity Project Validation'
       run: |
+        # Unity Project Validation
         Write-Host "::group::Unity Project Validation"
         $versionFile = "${{ inputs.version-file-path }}"
         $modulesString = "${{ inputs.modules }}"
@@ -34,7 +35,7 @@ runs:
 
         $projectPath = (Get-Item $versionFile).Directory.Parent.FullName
         Write-Host "Unity project path: `"$projectPath`""
-        Write-Host "::set-output name=project-path::$projectPath"
+        Write-Host "project-path=$projectPath" >> $GITHUB_OUTPUT
 
         $version = Get-Content $versionFile
         $pattern = '(?<version>(?:(?<major>\d+)\.)?(?:(?<minor>\d+)\.)?(?:(?<patch>\d+[fab]\d+)\b))|((?:\((?<revision>\w+))\))'
@@ -219,7 +220,7 @@ runs:
 
         Write-Host ""
         Write-Host "UnityEditor path set to: $editorPath"
-        Write-Host "::set-output name=editor-path::$editorPath"
+        Write-Host "editor-path=$editorPath" >> $GITHUB_OUTPUT
         Write-Host "::endgroup::"
         exit 0
       shell: pwsh
