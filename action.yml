@@ -20,10 +20,10 @@ runs:
   using: "composite"
   steps:
     - id: validate
-      name: 'Unity Project Validation'
+      name: 'Unity Editor Validation'
       run: |
-        # Unity Project Validation
-        Write-Host "::group::Unity Project Validation"
+        # Unity Editor Validation
+        Write-Host "::group::Unity Editor Validation"
         $versionFile = "${{ inputs.version-file-path }}"
         $modulesString = "${{ inputs.modules }}"
         $modules = $modulesString.Split(" ")
