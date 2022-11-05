@@ -1,4 +1,6 @@
-# Unity Validate (XRTK)
+# ~Unity Validate (XRTK)~ Replaced by xrtk/unity-setup@v1
+
+***This action has been replaced by https://github.com/XRTK/unity-setup***
 
 An atomic GitHub action to validate the Unity Editor Installation on the runner and get the project information.
 
